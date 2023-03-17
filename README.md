@@ -1,4 +1,10 @@
 # m4music
+##flutter music player using Getx
+
+![splashscreenshot](https://user-images.githubusercontent.com/113667646/225884815-e1ff718d-8291-410b-b9ca-30291768d99b.jpg)
+![musiclistscreenshot](https://user-images.githubusercontent.com/113667646/225884867-88437cf5-fcc1-4320-9627-181c23309004.jpg)
+![audioplayerscreenshot](https://user-images.githubusercontent.com/113667646/225884915-5e974990-4148-4de6-b5fb-5b4188a4ed08.jpg)
+
 
 A new Flutter project.
 
