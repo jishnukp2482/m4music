@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
 import 'package:m4music/controllers/playercontroller.dart';
 
@@ -29,7 +29,7 @@ class _homepageState extends State<homepage> {
             child: ListView(
               children: [
                 UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: bgdarkcolor,
                   ),
                   accountEmail: Text(
@@ -39,7 +39,7 @@ class _homepageState extends State<homepage> {
                   currentAccountPicture: Container(
                     height: 70,
                     width: 70,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image: AssetImage("assets/images/dev.jpg"),
@@ -52,7 +52,7 @@ class _homepageState extends State<homepage> {
                   ),
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.home,
                   ),
                   title: const Text('Home'),
@@ -61,7 +61,7 @@ class _homepageState extends State<homepage> {
                   },
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.info_outline,
                   ),
                   title: const Text('Abou App'),
@@ -75,7 +75,7 @@ class _homepageState extends State<homepage> {
             backgroundColor: bgdarkcolor,
             leading: IconButton(
                 onPressed: () => _scaffoldkey.currentState?.openDrawer(),
-                icon: Icon(Icons.sort_rounded, color: whitecolor)),
+                icon: const Icon(Icons.sort_rounded, color: whitecolor)),
             title: Text(
               "M4-MUSIC",
               style: ourstyle(
@@ -88,7 +88,7 @@ class _homepageState extends State<homepage> {
                  onPressed: () {
                    
                  },
-                  icon: Icon(
+                  icon: const Icon(
 
                     Icons.search,
                     color: whitecolor,
