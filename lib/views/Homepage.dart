@@ -4,20 +4,99 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:m4music/controllers/playercontroller.dart';
-import 'package:m4music/utilis/appbar.dart';
+
 import 'package:m4music/consts/textstyle.dart';
 import 'package:m4music/consts/colors.dart';
 import 'package:m4music/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
-class homepage extends StatelessWidget {
+class homepage extends StatefulWidget {
+  @override
+  State<homepage> createState() => _homepageState();
+}
+
+class _homepageState extends State<homepage> {
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
     var controller = Get.put(playercontroller());
+ 
     return SafeArea(
       child: Scaffold(
+          key: _scaffoldkey,
+          drawer: Drawer(
+            
+            child: ListView(
+              children: [
+                UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(
+                    color: bgdarkcolor,
+                  ),
+                  accountEmail: Text(
+                    job,
+                    style: ourstyle(),
+                  ),
+                  currentAccountPicture: Container(
+                    height: 70,
+                    width: 70,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/dev.jpg"),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  accountName: Text(
+                    dev,
+                    style: ourstyle(),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.home,
+                  ),
+                  title: const Text('Home'),
+                  onTap: () {
+                    Get.to(() => homepage());
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.info_outline,
+                  ),
+                  title: const Text('Abou App'),
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
           backgroundColor: bgdarkcolor,
-          appBar: appBar(),
+          appBar: AppBar(
+            backgroundColor: bgdarkcolor,
+            leading: IconButton(
+                onPressed: () => _scaffoldkey.currentState?.openDrawer(),
+                icon: Icon(Icons.sort_rounded, color: whitecolor)),
+            title: Text(
+              "M4-MUSIC",
+              style: ourstyle(
+                family: bold,
+                size: 18,
+              ),
+            ),
+            actions: [
+              IconButton(
+                 onPressed: () {
+                   
+                 },
+                  icon: Icon(
+
+                    Icons.search,
+                    color: whitecolor,
+                  )),
+                 
+                  
+            ],
+          ),
           body: FutureBuilder<List<SongModel>>(
             future: controller.audioQuery.querySongs(
               ignoreCase: true,
@@ -46,10 +125,10 @@ class homepage extends StatelessWidget {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         return Card(
-                          color: bgcolor,
-                          shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(14),
-      ),
+                            color: bgcolor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
                             margin: const EdgeInsets.only(bottom: 4),
                             child: Obx(
                               () => ListTile(
@@ -93,9 +172,13 @@ class homepage extends StatelessWidget {
                                       )
                                     : null,
                                 onTap: () {
-                                  Get.to(() => Player(data: snapshot.data!,),
-                                  transition: Transition.downToUp);
-                                   controller.playsong(snapshot.data![index].uri,index);
+                                  Get.to(
+                                      () => Player(
+                                            data: snapshot.data!,
+                                          ),
+                                      transition: Transition.downToUp);
+                                  controller.playsong(
+                                      snapshot.data![index].uri, index);
                                 },
                               ),
                             ));
@@ -109,3 +192,4 @@ class homepage extends StatelessWidget {
     );
   }
 }
+ 

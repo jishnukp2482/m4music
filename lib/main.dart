@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:m4music/views/Homepage.dart';
 import 'package:m4music/views/splash.dart';
 void main() {
   runApp(const MyApp());

@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:m4music/views/Homepage.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:just_audio/just_audio.dart';
@@ -12,6 +14,7 @@ class playercontroller extends GetxController {
   var position = ''.obs;
   var max = 0.0.obs;
   var newvalue = 0.0..obs;
+ 
   @override
   void onInit() {
     super.onInit();
@@ -49,6 +52,7 @@ class playercontroller extends GetxController {
   checkpermission() async {
     var perm = await Permission.storage.request();
     if (perm.isGranted) {
+  
     } else {
       checkpermission();
     }

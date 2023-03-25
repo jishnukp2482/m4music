@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:m4music/consts/colors.dart';
 import 'package:m4music/consts/textstyle.dart';
 import 'package:m4music/controllers/playercontroller.dart';
-import 'package:m4music/utilis/appbar.dart';
-import 'package:m4music/consts/colors.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Player extends StatelessWidget {
@@ -22,16 +20,16 @@ class Player extends StatelessWidget {
           child: Column(
             children: [
               Obx(
-                () =>  Expanded(
-                    child:  Container(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  height: 300,
-                                  width: 300,
-                                  decoration: const BoxDecoration(
+                () => Expanded(
+                  child: Container(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    height: 300,
+                    width: 300,
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: QueryArtworkWidget(
+                    ),
+                    alignment: Alignment.center,
+                    child: QueryArtworkWidget(
                       id: data[controller.playIndex.value].id,
                       type: ArtworkType.AUDIO,
                       artworkHeight: double.infinity,
@@ -41,9 +39,9 @@ class Player extends StatelessWidget {
                         size: 48,
                         color: whitecolor,
                       ),
-                                  ),
-                                ),
                     ),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 12,
@@ -57,7 +55,7 @@ class Player extends StatelessWidget {
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(16))),
                 child: Obx(
-                  () =>  Column(
+                  () => Column(
                     children: [
                       const SizedBox(
                         height: 12,
@@ -80,10 +78,9 @@ class Player extends StatelessWidget {
                         height: 6,
                       ),
                       Text(
-                         textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                       
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                         data[controller.playIndex.value].artist.toString(),
                         style: ourstyle(
                           family: regular,
@@ -108,11 +105,14 @@ class Player extends StatelessWidget {
                                 thumbColor: slidercolor,
                                 activeColor: slidercolor,
                                 inactiveColor: bgcolor,
-                                min: const Duration(seconds: 0).inSeconds.toDouble(),
+                                min: const Duration(seconds: 0)
+                                    .inSeconds
+                                    .toDouble(),
                                 max: controller.max.value,
                                 value: controller.newvalue,
                                 onChanged: (value) {
-                                  controller.changeDurationToSeconds(value.toInt());
+                                  controller
+                                      .changeDurationToSeconds(value.toInt());
                                   value = value;
                                 },
                               ),
@@ -135,8 +135,8 @@ class Player extends StatelessWidget {
                           IconButton(
                               onPressed: () {
                                 controller.playsong(
-                                    data[controller.playIndex.value-1].uri,
-                                    controller.playIndex.value-1);
+                                    data[controller.playIndex.value - 1].uri,
+                                    controller.playIndex.value - 1);
                               },
                               icon: const Icon(
                                 Icons.skip_previous_rounded,
@@ -172,9 +172,9 @@ class Player extends StatelessWidget {
                           ),
                           IconButton(
                               onPressed: () {
-                                   controller.playsong(
-                                    data[controller.playIndex.value+1].uri,
-                                    controller.playIndex.value+1);
+                                controller.playsong(
+                                    data[controller.playIndex.value + 1].uri,
+                                    controller.playIndex.value + 1);
                               },
                               icon: const Icon(
                                 Icons.skip_next_rounded,
